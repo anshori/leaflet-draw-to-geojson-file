@@ -1,0 +1,25 @@
+html, body, #container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+#map {
+  width: auto;
+  height: 100%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.info {
+  padding: 6px 8px;
+  font: 12px/14px Arial, Helvetica, sans-serif;
+  color: white;
+  background: rgba(52,58,64,0.8);
+  box-shadow: 0 0 15px rgba(255,255,255,0.2);
+  border-radius: 5px;
+  text-align: right;
+}
+
+#exportBtn {
+  color: #ffffff;
+  font-weight: bold;
+}
