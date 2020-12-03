@@ -147,5 +147,9 @@ function geojsonExport(){
   let linkElement = document.createElement('a');
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
-  linkElement.click();
+  if (jsonData == '{"type":"FeatureCollection","features":[]}') {
+    alert('No features are drawn');
+  } else {
+    linkElement.click();
+  }
 }
