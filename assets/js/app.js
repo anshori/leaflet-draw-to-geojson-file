@@ -141,13 +141,16 @@ showExportButton.addTo(map);
 
 // Export to GeoJSON File
 function geojsonExport(){
+  let nodata = '{"type":"FeatureCollection","features":[]}';
   let jsonData = (JSON.stringify(drawnItems.toGeoJSON()));
   let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(jsonData);
-  let exportFileDefaultName = 'draw.geojson';
+  let datenow = new Date();
+  let datenowstr = datenow.toLocaleDateString('en-GB');
+  let exportFileDefaultName = 'export_draw_'+ datenowstr + '.geojson';
   let linkElement = document.createElement('a');
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
-  if (jsonData == '{"type":"FeatureCollection","features":[]}') {
+  if (jsonData == nodata) {
     alert('No features are drawn');
   } else {
     linkElement.click();
