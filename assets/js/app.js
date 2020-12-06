@@ -68,7 +68,11 @@ var getPopupContent = function(layer) {
       for (var i = 0; i < latlngs.length-1; i++) {
         distance += latlngs[i].distanceTo(latlngs[i+1]);
       }
-      return "Distance: "+_round(distance, 2)+" m";
+      if (_round(distance, 2) > 1000) {
+        return "Distance: "+_round(distance, 2)/1000 + " km"; // kilometers
+      } else {
+        return "Distance: "+_round(distance, 2) + " m"; // meters
+      }
     }
   }
   return null;
@@ -88,7 +92,6 @@ map.on(L.Draw.Event.CREATED, function(event) {
   var props = feature.properties = feature.properties || {}; // Intialize feature.properties
   props.info = content;
   drawnItems.addLayer(layer);
-
   console.log(JSON.stringify(drawnItems.toGeoJSON()));
 });
 
